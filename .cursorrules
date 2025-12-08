@@ -1,0 +1,38 @@
+# AxiomHive Sovereign Manifold - Cursor Rules
+
+## Project Context
+- **Project**: AxiomHive Sovereign Manifold v2.1.0
+- **Creator**: Alexis M. Adams
+- **Purpose**: Higher-Dimensional Deterministic Intelligence System
+- **Core Principle**: Zero Entropy Law (C=0)
+
+## Zero Entropy Law Compliance
+- All operations must be deterministic
+- Temperature defaults to 0.0
+- Entropy count must equal 1
+- No random number generation without frozen seeds
+- All outputs must be verifiable
+
+## Code Style
+- **Rust**: Follow standard Rust conventions, use `cargo fmt` and `cargo clippy`
+- **Python**: Follow PEP 8, use type hints, write docstrings
+- **JavaScript**: Use modern ES6+, consistent naming, comment complex logic
+
+## Architecture
+- Frontend: HTML/CSS/JavaScript (Vanilla)
+- Backend: Rust (Tauri v2)
+- ML: Python (PyTorch)
+- Crypto: LWE lattice-based FHE
+
+## Branding
+- Always credit: "Created by Alexis M. Adams"
+- Use AxiomHive branding consistently
+- Maintain Zero Entropy Law messaging
+- Professional, elite presentation
+
+## Documentation
+- Update relevant docs when making changes
+- Include examples in code comments
+- Maintain README accuracy
+- Document all public APIs
+
