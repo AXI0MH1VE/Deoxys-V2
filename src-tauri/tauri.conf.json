@@ -1,0 +1,106 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "build": {
+    "beforeBuildCommand": "",
+    "beforeDevCommand": "",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "AxiomHive",
+    "version": "2.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "fs": {
+        "all": false,
+        "readFile": true,
+        "writeFile": true
+      },
+      "dialog": {
+        "all": true
+      },
+      "http": {
+        "all": true
+      },
+      "path": {
+        "all": true
+      },
+      "process": {
+        "all": false,
+        "relauch": true
+      },
+      "window": {
+        "all": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.axiomhive.sovereign",
+      "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"],
+      "resources": [],
+      "externalBin": [],
+      "macOS": {
+        "entitlements": null,
+        "exceptionDomain": null,
+        "providerShortName": null,
+        "signatureFlags": null
+      },
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": null
+      }
+    },
+    "updater": {
+      "active": false
+    },
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 800,
+        "resizable": true,
+        "title": "AxiomHive Sovereign Manifold v2.1.0",
+        "width": 1200,
+        "center": true,
+        "decorations": true,
+        "visible": true,
+        "transparent": false,
+        "maxWidth": null,
+        "maxHeight": null,
+        "minWidth": 800,
+        "minHeight": 600,
+        "fileDropEnabled": false,
+        "alwaysOnTop": false,
+        "skipTaskbar": false,
+        "theme": "dark",
+        "visibleOnAllWorkspaces": false,
+        "focus": true,
+        "titleBarStyle": "default",
+        "hiddenTitle": false,
+        "maximized": false,
+        "acceptFirstMouse": false,
+        "contentProtected": false,
+        "closable": true,
+        "minimizable": true,
+        "maximizable": true,
+        "fullscreenable": true,
+        "aspectRatio": null,
+        "backgroundColor": "#000000",
+        "hasShadow": true,
+        "zoomPageFactor": 1.0,
+        "userAgent": null
+      }
+    ]
+  }
+}

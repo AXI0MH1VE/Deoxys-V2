@@ -1,0 +1,19 @@
+[package]
+name = "toon-rs"
+version = "2.1.0"
+edition = "2021"
+authors = ["AxiomHive Sovereign Manifold"]
+
+[lib]
+name = "toon_rs"
+path = "src/lib.rs"
+
+[dependencies]
+nom = "7.1"
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"
+
+[features]
+default = []
+frozen-seed = []
+

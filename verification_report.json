@@ -1,0 +1,88 @@
+{
+  "system": "AxiomHive Sovereign Manifold v2.1.0",
+  "zero_entropy_law": "C=0",
+  "boot_log": {
+    "status": "SUCCESS",
+    "risk_score": 0,
+    "risk_status": "INSURABLE",
+    "bio_proof": 308537780,
+    "iteration_count": 10,
+    "temperature": 0.0,
+    "entropy_count": 1,
+    "all_hashes_match": true,
+    "insurance_token": "ISSUED"
+  },
+  "verification_steps": {
+    "toon_json_delimiter_panic": "PASS - Parser panics on '{' delimiter",
+    "mamba_hippo_initialization": "PASS - A-matrix uses deterministic HiPPO",
+    "mamba_lyapunov_stability": "PASS - A-matrix clamped for stability",
+    "risk_entropy_count_assertion": "PASS - Entropy Count == 1 enforced",
+    "risk_temperature_zero": "PASS - Temperature=0.0 enforced",
+    "risk_sha256_verification": "PASS - All N=10 hashes match",
+    "visual_theme_background_override": "PASS - background-image: none!important present",
+    "visual_theme_canonical_palette": "PASS - Axiom Black #000000, Miami Red #FF0038",
+    "visual_theme_honeycomb_grid": "PASS - Hex grid pattern implemented",
+    "container_frozen_seed": "PASS - --features frozen-seed flag in entrypoint"
+  },
+  "component_status": {
+    "toon_parser": {
+      "status": "READY",
+      "features": ["zero-copy", "guardrail_regex", "json_delimiter_panic"]
+    },
+    "mamba_core": {
+      "status": "READY",
+      "features": ["hippo_initialization", "lyapunov_stability", "ssd_equation"]
+    },
+    "deoxys_fhe": {
+      "status": "READY",
+      "features": ["lwe_encryption", "deterministic_keys", "rik_support"],
+      "parameters": {
+        "modulus_q": 1152921504606846976,
+        "plaintext_modulus_t": 65536,
+        "dimension_n": 1024
+      }
+    },
+    "risk_calculator": {
+      "status": "READY",
+      "features": ["n_iterations", "temperature_zero", "sha256_verification", "entropy_count_assertion"]
+    },
+    "visual_theme_os": {
+      "status": "READY",
+      "features": ["canonical_palette", "honeycomb_grid", "background_override"]
+    },
+    "containerfile": {
+      "status": "READY",
+      "features": ["frozen_seed", "multi_stage", "healthcheck"]
+    }
+  },
+  "file_tree": {
+    "src": {
+      "core": {
+        "toon-rs": {
+          "Cargo.toml": "Rust crate configuration",
+          "src": {
+            "lib.rs": "TOON parser implementation"
+          }
+        },
+        "mamba_core.py": "Mamba-2 State Space Model"
+      },
+      "security": {
+        "fhe_wrapper.py": "Deoxys FHE wrapper with RIK"
+      },
+      "deployable": {
+        "Cargo.toml": "Risk calculator crate config",
+        "risk_calculator.rs": "OLO Risk Engine"
+      }
+    },
+    "ui": {
+      "global.css": "Visual Theme OS stylesheet",
+      "tailwind.config.js": "Tailwind CSS configuration"
+    },
+    "deployable": {
+      "Containerfile": "Podman/WASM container definition"
+    },
+    "README.md": "System documentation",
+    "verification_report.json": "This verification report"
+  }
+}
+

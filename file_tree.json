@@ -1,0 +1,94 @@
+{
+  "root": "Deoxys",
+  "structure": {
+    "src": {
+      "type": "directory",
+      "children": {
+        "core": {
+          "type": "directory",
+          "children": {
+            "toon-rs": {
+              "type": "directory",
+              "children": {
+                "Cargo.toml": {
+                  "type": "file",
+                  "description": "Rust crate configuration for TOON parser"
+                },
+                "src": {
+                  "type": "directory",
+                  "children": {
+                    "lib.rs": {
+                      "type": "file",
+                      "description": "TOON parser with zero-copy semantics and guardrail regex"
+                    }
+                  }
+                }
+              }
+            },
+            "mamba_core.py": {
+              "type": "file",
+              "description": "Mamba-2 Hybrid State Space Model with deterministic HiPPO initialization"
+            }
+          }
+        },
+        "security": {
+          "type": "directory",
+          "children": {
+            "fhe_wrapper.py": {
+              "type": "file",
+              "description": "Deoxys FHE wrapper with LWE lattice parameters and RIK support"
+            }
+          }
+        },
+        "deployable": {
+          "type": "directory",
+          "children": {
+            "Cargo.toml": {
+              "type": "file",
+              "description": "Rust crate configuration for risk calculator"
+            },
+            "risk_calculator.rs": {
+              "type": "file",
+              "description": "OLO Risk Engine with N=10 iteration check and SHA-256 verification"
+            }
+          }
+        }
+      }
+    },
+    "ui": {
+      "type": "directory",
+      "children": {
+        "global.css": {
+          "type": "file",
+          "description": "Visual Theme OS global stylesheet with canonical palette"
+        },
+        "tailwind.config.js": {
+          "type": "file",
+          "description": "Tailwind CSS configuration with Axiom Black and Miami Red"
+        }
+      }
+    },
+    "deployable": {
+      "type": "directory",
+      "children": {
+        "Containerfile": {
+          "type": "file",
+          "description": "Podman/WASM container definition with frozen-seed feature"
+        }
+      }
+    },
+    "README.md": {
+      "type": "file",
+      "description": "System documentation and build instructions"
+    },
+    "verification_report.json": {
+      "type": "file",
+      "description": "Verification report with boot log and component status"
+    },
+    "file_tree.json": {
+      "type": "file",
+      "description": "This file tree structure"
+    }
+  }
+}
+

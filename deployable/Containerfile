@@ -1,0 +1,64 @@
+# 03_FORGE/deployable/Containerfile
+# AxiomHive Sovereign Manifold v2.1.0
+# Zero Entropy Law (C=0) - Deterministic deployment
+# Podman and WASM: The Edge-Native Stack
+
+# Stage 1: The Builder (Rust + WASM Toolchain)
+FROM docker.io/library/rust:1.81-slim-bookworm AS builder
+
+# Install WASM targets
+RUN rustup target add wasm32-wasi
+RUN apt-get update && apt-get install -y clang llvm && rm -rf /var/lib/apt/lists/*
+
+# Setup Workspace
+WORKDIR /usr/src/axiom-hive
+
+# Copy Cargo files
+COPY src/core/toon-rs/Cargo.toml ./toon-rs/Cargo.toml
+COPY src/deployable/Cargo.toml ./risk-calculator/Cargo.toml
+
+# Copy Source Artifacts
+COPY src/core/toon-rs/src ./toon-rs/src
+COPY src/deployable/risk_calculator.rs ./risk-calculator/src/main.rs
+
+# Copy Python modules
+COPY src/core/mamba_core.py ./config/
+COPY src/security/fhe_wrapper.py ./config/
+
+# BUILD DIRECTIVE: Release Mode with Frozen Seed Feature
+# This compiles the RNG with a hardcoded seed, ensuring C=0 behavior.
+WORKDIR /usr/src/axiom-hive/risk-calculator
+RUN cargo build --release --target wasm32-wasi --features "frozen-seed" || \
+    cargo build --release --features "frozen-seed"
+
+WORKDIR /usr/src/axiom-hive/toon-rs
+RUN cargo build --release --target wasm32-wasi --features "frozen-seed" || \
+    cargo build --release --features "frozen-seed"
+
+# Stage 2: The Sovereign Runtime (Scratch Image)
+FROM scratch
+
+# Metadata
+LABEL maintainer="AxiomHive Architect"
+LABEL version="2.1.0"
+LABEL description="Sovereign Manifold - Zero Entropy Runtime"
+LABEL risk_score="0"
+
+# Inject the WASM Binary (or native binary if WASM build failed)
+COPY --from=builder /usr/src/axiom-hive/risk-calculator/target/wasm32-wasi/release/risk_calculator.wasm /engine.wasm
+COPY --from=builder /usr/src/axiom-hive/risk-calculator/target/release/risk_calculator /engine.bin
+
+# Inject Interface Assets
+COPY ui/global.css /ui/global.css
+COPY ui/tailwind.config.js /ui/tailwind.config.js
+
+# Inject Python modules
+COPY --from=builder /usr/src/axiom-hive/config/mamba_core.py /config/mamba_core.py
+COPY --from=builder /usr/src/axiom-hive/config/fhe_wrapper.py /config/fhe_wrapper.py
+
+# ENTRYPOINT: The Unified Collective Engine
+# We invoke the WASM runtime (provided by the host, e.g., crun or wasm-edge)
+# The arguments --seed 42 explicitly enforce the Frozen Seed State v1.0
+# Note: In practice, the host runtime (wasmtime, wasm-edge) would execute /engine.wasm
+# For compatibility, we also provide a native binary fallback
+ENTRYPOINT ["/engine.bin", "--seed", "42", "--mode", "verified"]
