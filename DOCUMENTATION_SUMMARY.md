@@ -146,6 +146,7 @@
 7. ✅ CHANGELOG.md (version history)
 8. ✅ LICENSE (MIT with attribution)
 9. ✅ keywords.txt (SEO keywords)
+10. ✅ AXIOMHIVE_VALUE_CAPTURE.md (deterministic value capture and financial integrity assessment)
 
 ### GitHub Files
 1. ✅ .github/ISSUE_TEMPLATE/bug_report.md

@@ -297,6 +297,118 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
+    // Contract Pipeline
+    const processContractBtn = document.getElementById('processContractBtn');
+    const contractInput = document.getElementById('contractInput');
+    const contractOutput = document.getElementById('contractOutput');
+
+    processContractBtn.addEventListener('click', async () => {
+        const contract = contractInput.value.trim();
+        if (!contract) {
+            showToast('Please enter contract text', 'error');
+            return;
+        }
+
+        processContractBtn.disabled = true;
+        processContractBtn.innerHTML = `
+            <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Processing...
+        `;
+        contractOutput.innerHTML = '<div class="flex items-center justify-center h-full"><div class="text-center"><div class="animate-spin w-8 h-8 border-4 border-miami-red border-t-transparent rounded-full mx-auto mb-4"></div><p class="text-white/50">Processing contract...</p></div></div>';
+
+        try {
+            const result = await invoke('analyze_contract', { contract_text: contract });
+            
+            if (result.status === 'success') {
+                const summary = result.summary;
+                contractOutput.innerHTML = `
+                    <div class="space-y-4 animate-fadeIn">
+                        <div class="text-green-400 font-semibold mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Contract Summary
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="text-miami-red font-semibold mb-1">Parties:</div>
+                                <div class="text-white/80">${summary.parties?.join(', ') || 'N/A'}</div>
+                            </div>
+                            <div>
+                                <div class="text-miami-red font-semibold mb-1">Key Obligations (${summary.key_obligations?.length || 0}/10):</div>
+                                <div class="space-y-1 max-h-32 overflow-y-auto">
+                                    ${(summary.key_obligations || []).map((ob, i) => `
+                                        <div class="text-white/70 text-xs pl-2 border-l-2 border-miami-red/30">
+                                            ${i + 1}. [${ob.party}] ${ob.description}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-miami-red font-semibold mb-1">Risk Flags (${summary.risk_flags?.length || 0}/20):</div>
+                                <div class="space-y-1 max-h-32 overflow-y-auto">
+                                    ${(summary.risk_flags || []).map((risk, i) => {
+                                        const severityColor = {
+                                            'critical': 'text-red-400',
+                                            'high': 'text-orange-400',
+                                            'medium': 'text-yellow-400',
+                                            'low': 'text-green-400'
+                                        }[risk.severity] || 'text-white/70';
+                                        return `
+                                            <div class="text-xs pl-2 border-l-2 border-miami-red/30">
+                                                <span class="${severityColor} font-semibold">[${risk.severity.toUpperCase()}]</span> ${risk.description}
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                            ${summary.effective_date ? `
+                                <div>
+                                    <div class="text-miami-red font-semibold mb-1">Effective Date:</div>
+                                    <div class="text-white/80">${summary.effective_date}</div>
+                                </div>
+                            ` : ''}
+                            ${summary.termination_date ? `
+                                <div>
+                                    <div class="text-miami-red font-semibold mb-1">Termination Date:</div>
+                                    <div class="text-white/80">${summary.termination_date}</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                showToast('Contract processed successfully', 'success');
+            } else {
+                contractOutput.innerHTML = `
+                    <div class="text-red-400">
+                        <div class="font-semibold mb-2">Processing Error</div>
+                        <div class="text-sm text-white/70">${escapeHtml(JSON.stringify(result.error || result, null, 2))}</div>
+                    </div>
+                `;
+                showToast('Contract processing failed', 'error');
+            }
+        } catch (error) {
+            contractOutput.innerHTML = `
+                <div class="text-red-400">
+                    <div class="font-semibold mb-2">Error</div>
+                    <div class="text-sm text-white/70">${escapeHtml(error)}</div>
+                </div>
+            `;
+            showToast('Contract processing error', 'error');
+        } finally {
+            processContractBtn.disabled = false;
+            processContractBtn.innerHTML = `
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Process Contract
+            `;
+        }
+    });
+
     // Initialize system status
     await updateSystemStatus();
 });

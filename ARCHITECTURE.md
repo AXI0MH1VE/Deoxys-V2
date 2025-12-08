@@ -13,6 +13,7 @@ The AxiomHive Sovereign Manifold is a complete instantiation of Higher-Dimension
 **Purpose**: Zero-copy data serialization format that maximizes information-to-token ratio by eliminating JSON verbosity.
 
 **Key Features**:
+
 - Guardrail header format: `key [count]{schema}`
 - Zero-copy parsing using `nom` parser combinators
 - Panics on standard JSON delimiters (`{`, `}`, `[`, `]`)
@@ -22,54 +23,90 @@ The AxiomHive Sovereign Manifold is a complete instantiation of Higher-Dimension
 
 ### 2. Mamba-2 Hybrid State Space Model
 
-**Location**: `src/core/mamba_core.py`
+**Location**: `src-tauri/src/mamba_core.rs`
 
 **Purpose**: Linear complexity (O(n)) compute core implementing State Space Duality (SSD).
 
 **Key Features**:
+
 - SSD equation: `h'(t) = Ah(t) + Bx(t)`
 - Deterministic HiPPO initialization (no random weights)
 - Lyapunov stability enforcement via log-parameterization
-- PyTorch-based implementation with frozen seed
+- Pure Rust implementation with frozen seed
 
-**Implementation**: Python module using PyTorch, with deterministic A-matrix initialization based on HiPPO theory.
+**Implementation**: Pure Rust module with deterministic A-matrix initialization based on HiPPO theory. All operations run in-process with zero OS command execution. See `AGENT_REQUIREMENTS.md` for compliance details.
 
 ### 3. Deoxys Fully Homomorphic Encryption (FHE)
 
-**Location**: `src/security/fhe_wrapper.py`
+**Location**: `src-tauri/src/fhe_core.rs`
 
 **Purpose**: Privacy-preserving computation using LWE lattice-based encryption.
 
 **Key Features**:
+
 - LWE parameters: Modulus Q=2^60, Plaintext Modulus T=2^16, Dimension N=1024
 - `encrypt(pk, m)` and `decrypt(sk, ct)` signatures
 - Homomorphic addition: `E(m1) + E(m2) = E(m1 + m2)`
 - Recursive Intelligence Kernel (RIK) support
 
-**Implementation**: Python wrapper implementing LWE encryption/decryption with deterministic key generation.
+**Implementation**: Pure Rust implementation of LWE encryption/decryption with deterministic key generation. All operations run in-process with zero network dependencies. See `NETWORK_SAFETY.md` for verification.
 
 ### 4. OLO Risk Calculator
 
-**Location**: `src/deployable/risk_calculator.rs`
+**Location**: `src/deployable/src/lib.rs`
 
 **Purpose**: Inverted Lagrangian Optimization engine for financial risk verification.
 
 **Key Features**:
+
 - N=10 iteration check at Temperature=0.0
 - SHA-256 hash verification
 - Returns `RISK SCORE: 0` only if all hashes match
 - Bio-Proof verification (308537780)
-- HTTP endpoint testing with `reqwest`
+- Pure in-process computation (no network operations)
 
-**Implementation**: Rust binary using `clap` for CLI, `reqwest` for HTTP, `sha2` for hashing, and `colored` for output.
+**Implementation**: Pure Rust library using `sha2` for hashing. All operations are deterministic and run in-process. No network dependencies. See `NETWORK_SAFETY.md` for verification.
 
-### 5. Visual Theme OS
+### 5. Contract Analyzer
+
+**Location**: `src-tauri/src/contract_analyzer.rs`
+
+**Purpose**: Deterministic legal contract summarization pipeline implementing DAG specification.
+
+**Key Features**:
+
+- DAG-based analysis workflow
+- Party extraction and obligation detection
+- Risk flag identification
+- Schema validation with cardinality limits
+- Cryptographic seal computation
+
+**Implementation**: Pure Rust implementation using regex for pattern matching. All analysis runs in-process with deterministic results. See `AGENT_REQUIREMENTS.md` for compliance.
+
+### 6. AxiomDeterminist
+
+**Location**: `src-tauri/src/axiom_determinist/`
+
+**Purpose**: Multi-agent orchestration system for deterministic code generation.
+
+**Key Features**:
+
+- Architect, Librarian, Builder, Auditor agents
+- Dependency graph (DAG) management
+- Reflexion loop for code repair
+- Hermetic sandbox validation
+- Sterilization checking (no TODO/FIXME)
+
+**Implementation**: Pure Rust multi-agent system. All validation runs in-process using pattern matching. Zero OS command execution. See `AGENT_REQUIREMENTS.md` for details.
+
+### 7. Visual Theme OS
 
 **Location**: `ui/global.css`, `ui/tailwind.config.js`
 
 **Purpose**: Deterministic UI enforcing Zero Entropy visual philosophy.
 
 **Key Features**:
+
 - Canonical palette: Axiom Black (#000000), Miami Red (#FF0038)
 - Honeycomb Hex Grid background
 - `background-image: none!important` overrides
@@ -78,13 +115,14 @@ The AxiomHive Sovereign Manifold is a complete instantiation of Higher-Dimension
 
 **Implementation**: Tailwind CSS configuration with custom global stylesheet.
 
-### 6. Containerized Deployment
+### 8. Containerized Deployment
 
 **Location**: `deployable/Containerfile`
 
 **Purpose**: Podman/WASM edge runtime with frozen-seed enforcement.
 
 **Key Features**:
+
 - Multi-stage build (Rust builder + Python runtime)
 - WASM compilation target (`wasm32-wasi`)
 - Frozen-seed feature flag
@@ -101,9 +139,20 @@ The AxiomHive Sovereign Manifold is a complete instantiation of Higher-Dimension
 3. **Risk Calculator**: Temperature=0.0 enforced, Entropy Count == 1
 4. **Visual Theme**: CSS overrides gradients, enforces canonical palette
 
+### In-Process Execution Compliance
+
+**All modules verified:**
+
+- ✅ Zero OS command execution (`std::process::Command` removed)
+- ✅ Zero network operations (no HTTP, TCP, or socket I/O)
+- ✅ Pure Rust implementations for all core functionality
+- ✅ Complete isolation from external dependencies
+
+See `AGENT_REQUIREMENTS.md` and `NETWORK_SAFETY.md` for detailed verification.
+
 ### Expected Boot Log
 
-```
+```text
 AXIOM HIVE KERNEL INITIALIZING...
 2025-12-08 04:22:16 UTC
 SOVEREIGN_MANIFOLD (C=0 ENFORCED)
@@ -125,7 +174,6 @@ RIK Loop: TOKIO::SELECT... ACTIVE
 Privacy: ZERO TRUST
 
 RISK_VERIFICATION:
-Endpoint: LOCALHOST:11434
 Iterations: 10/10
 Entropy: 0.00%
 Bio-Proof: 308537780
@@ -152,18 +200,18 @@ cd src/deployable
 cargo build --release --features frozen-seed
 ```
 
-### Python Components
+### Tauri Application
 
 ```bash
-# Install dependencies
-pip install torch numpy
+# Build Tauri application
+cd src-tauri
+cargo build --release
 
-# Test Mamba-2 core
-python src/core/mamba_core.py
-
-# Test Deoxys FHE
-python src/security/fhe_wrapper.py
+# Run development server
+npm run dev
 ```
+
+**Note**: All core functionality (Mamba-2, FHE, Contract Analysis) is now implemented in pure Rust and runs in-process. No Python subprocess execution. See `AGENT_REQUIREMENTS.md` for details.
 
 ### Container Build
 
@@ -177,7 +225,7 @@ podman run --rm axiomhive:v2.1.0
 
 ## File Tree Structure
 
-```
+```text
 Deoxys/
 ├── src/
 │   ├── core/
@@ -202,6 +250,27 @@ Deoxys/
 └── file_tree.json
 ```
 
+## Critical Requirements
+
+### ⚠️ Mandatory Reading for All Contributors
+
+Before making any changes to the codebase:
+
+1. **Read [AGENT_REQUIREMENTS.md](./AGENT_REQUIREMENTS.md)** - Zero OS command execution policy
+2. **Read [NETWORK_SAFETY.md](./NETWORK_SAFETY.md)** - Zero network operations policy
+3. **Verify compliance** - All operations must run in-process using pure Rust
+
+### Implementation Status
+
+| Component | Language | Status | Notes |
+|-----------|----------|--------|-------|
+| TOON Parser | Rust | ✅ Complete | Zero network/OS operations |
+| Mamba-2 Core | Rust | ✅ Complete | Pure Rust, in-process |
+| FHE Encryption | Rust | ✅ Complete | Pure Rust, in-process |
+| Contract Analyzer | Rust | ✅ Complete | Pure Rust, in-process |
+| Risk Calculator | Rust | ✅ Complete | Pure Rust, in-process |
+| AxiomDeterminist | Rust | ✅ Complete | Pure Rust, in-process |
+
 ## References
 
 - Zero Entropy Law (C=0): Contradiction within any system state must equal zero
@@ -210,3 +279,10 @@ Deoxys/
 - LWE: Learning With Errors (lattice-based cryptography)
 - OLO: Ontological Lagrangian Optimization
 
+## Related Documentation
+
+- **[AGENT_REQUIREMENTS.md](./AGENT_REQUIREMENTS.md)**: Mandatory requirements for all code changes
+- **[NETWORK_SAFETY.md](./NETWORK_SAFETY.md)**: Network safety guarantees
+- **[README.md](./README.md)**: Project overview and quick start
+- **[USER_GUIDE.md](./USER_GUIDE.md)**: Complete user guide
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)**: Contribution guidelines

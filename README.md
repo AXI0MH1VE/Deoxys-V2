@@ -13,6 +13,8 @@
 
 [Features](#-features) • [Installation](#-installation) • [User Guide](./USER_GUIDE.md) • [Documentation](#-documentation) • [Architecture](#-architecture) • [Contributing](#-contributing)
 
+**⚠️ FOR AGENTS: [Read AGENT_REQUIREMENTS.md](./AGENT_REQUIREMENTS.md) - NO OS COMMANDS OR HOOKS**
+
 </div>
 
 ---
@@ -113,10 +115,15 @@ This launches the AxiomHive desktop application with full UI access to all syste
 
 ## 📖 Documentation
 
+**📋 [Complete Documentation Index](./DOCUMENTATION_INDEX.md)** - Find all documentation files organized by topic
+
 ### Essential Reading
 
 - **[USER_GUIDE.md](./USER_GUIDE.md)**: **Start here!** Complete guide explaining what AxiomHive is, how to use it, why it's elite, and competitive positioning
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)**: Complete technical architecture and design decisions
+- **[AGENT_REQUIREMENTS.md](./AGENT_REQUIREMENTS.md)**: **⚠️ FOR AGENTS** - Mandatory requirements: Zero OS commands, in-process execution
+- **[NETWORK_SAFETY.md](./NETWORK_SAFETY.md)**: Network safety guarantees and verification
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)**: Contribution guidelines and code standards
 - **[README_UI.md](./README_UI.md)**: User interface guide and feature documentation
 - **[ELITE_UI_FEATURES.md](./ELITE_UI_FEATURES.md)**: Elite UI features and design philosophy
 - **[PRODUCT_COMPLETE.md](./PRODUCT_COMPLETE.md)**: Product completion status and verification
@@ -149,10 +156,12 @@ AxiomHive Sovereign Manifold v2.1.0
 ### Technology Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla), Tailwind CSS
-- **Backend**: Rust (Tauri v2), Python 3.11+
-- **ML Framework**: PyTorch
-- **Cryptography**: LWE lattice-based FHE
+- **Backend**: Rust (Tauri v2) - **All core functionality in pure Rust**
+- **ML Framework**: Pure Rust Mamba-2 implementation (no PyTorch dependencies)
+- **Cryptography**: Pure Rust LWE lattice-based FHE
 - **Build System**: Cargo, npm
+
+**Note**: All operations run in-process using pure Rust. No Python subprocess execution. See `AGENT_REQUIREMENTS.md` for details.
 
 ## 🔬 Zero Entropy Law (C=0)
 

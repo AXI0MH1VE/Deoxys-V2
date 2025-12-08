@@ -6,6 +6,19 @@
 - **Purpose**: Higher-Dimensional Deterministic Intelligence System
 - **Core Principle**: Zero Entropy Law (C=0)
 
+## ⚠️ CRITICAL REQUIREMENTS - READ FIRST
+
+### NO OS COMMANDS OR HOOKS
+- **MANDATORY**: Read `AGENT_REQUIREMENTS.md` before making any changes
+- **FORBIDDEN**: `std::process::Command`, `spawn()`, external script execution
+- **REQUIRED**: All operations must run in-process using pure Rust
+- **VERIFIED**: All modules are network-free and OS-command-free
+
+### Network Safety
+- **MANDATORY**: Read `NETWORK_SAFETY.md` for network operation restrictions
+- **FORBIDDEN**: HTTP requests, TCP sockets, network I/O
+- **REQUIRED**: All operations are in-memory, zero network dependencies
+
 ## Zero Entropy Law Compliance
 - All operations must be deterministic
 - Temperature defaults to 0.0
@@ -21,8 +34,15 @@
 ## Architecture
 - Frontend: HTML/CSS/JavaScript (Vanilla)
 - Backend: Rust (Tauri v2)
-- ML: Python (PyTorch)
-- Crypto: LWE lattice-based FHE
+- ML: Pure Rust implementations (no Python subprocesses)
+- Crypto: Pure Rust LWE lattice-based FHE
+- **All operations in-process - no external dependencies**
+
+## Module Structure
+- `src-tauri/src/mamba_core.rs` - Pure Rust Mamba-2 implementation
+- `src-tauri/src/fhe_core.rs` - Pure Rust FHE implementation
+- `src-tauri/src/contract_analyzer.rs` - Pure Rust contract analysis
+- `src/core/toon-rs/src/lib.rs` - Pure Rust TOON parser (network-free)
 
 ## Branding
 - Always credit: "Created by Alexis M. Adams"
@@ -35,4 +55,4 @@
 - Include examples in code comments
 - Maintain README accuracy
 - Document all public APIs
-
+- **Reference AGENT_REQUIREMENTS.md in all agent interactions**

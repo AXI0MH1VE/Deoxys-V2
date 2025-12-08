@@ -2,6 +2,12 @@
 //! AxiomHive Sovereign Manifold v2.1.0
 //! Zero Entropy Law (C=0) - Zero-copy parsing with memory pre-allocation
 //! Uses nom parser combinator for strict adherence to TOON v2.0 specification
+//!
+//! # Network Safety
+//! This library performs ZERO network operations. It is a pure parsing library
+//! that operates entirely on in-memory string slices. No HTTP, TCP, or socket
+//! operations are performed. All dependencies (nom, serde, thiserror) are
+//! also network-free.
 
 use nom::{
     bytes::complete::{tag, take_until},

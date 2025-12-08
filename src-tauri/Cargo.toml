@@ -10,10 +10,12 @@ license = "MIT"
 tauri-build = { version = "2.0", features = [] }
 
 [dependencies]
-tauri = { version = "2.0", features = ["api-all"] }
+tauri = { version = "2.0", features = ["devtools"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1.0", features = ["full"] }
+sha2 = "0.10"
+regex = "1.10"
 
 # Core modules
 toon-rs = { path = "../src/core/toon-rs" }
