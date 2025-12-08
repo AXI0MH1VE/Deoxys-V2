@@ -1,19 +1,49 @@
 {
   "name": "axiomhive-sovereign-manifold",
   "version": "2.1.0",
-  "description": "AxiomHive Sovereign Manifold - Zero Entropy Deterministic Intelligence System",
+  "description": "AxiomHive Sovereign Manifold - Higher-Dimensional Deterministic Intelligence System. Replacing probabilistic AI with mathematical certainty through Zero Entropy Law (C=0) enforcement.",
+  "keywords": [
+    "axiomhive",
+    "deterministic-ai",
+    "mamba-2",
+    "state-space-model",
+    "homomorphic-encryption",
+    "fhe",
+    "zero-entropy",
+    "deterministic-intelligence",
+    "machine-learning",
+    "rust",
+    "tauri",
+    "pytorch",
+    "cryptography",
+    "risk-calculation",
+    "toon-parser",
+    "alexis-adams"
+  ],
+  "author": "Alexis M. Adams",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AXI0MH1VE/Deoxys-V2.git"
+  },
+  "homepage": "https://github.com/AXI0MH1VE/Deoxys-V2#readme",
+  "bugs": {
+    "url": "https://github.com/AXI0MH1VE/Deoxys-V2/issues"
+  },
   "type": "module",
   "scripts": {
     "dev": "tauri dev",
     "build": "tauri build",
-    "setup": "pip install torch numpy && npm install",
-    "dev:server": "node dev-server.js"
+    "setup": "pip install torch numpy && npm install"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.0.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
-

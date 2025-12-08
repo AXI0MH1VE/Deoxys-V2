@@ -2,9 +2,14 @@
 name = "axiom-hive"
 version = "2.1.0"
 edition = "2021"
-authors = ["AxiomHive Sovereign Manifold"]
-description = "AxiomHive Sovereign Manifold v2.1.0 - Zero Entropy Deterministic Intelligence System"
+authors = ["Alexis M. Adams <alexis@axiomhive.com>"]
+description = "AxiomHive Sovereign Manifold v2.1.0 - Higher-Dimensional Deterministic Intelligence System enforcing Zero Entropy Law (C=0). Replaces probabilistic AI with mathematically verifiable, deterministic computation."
 license = "MIT"
+repository = "https://github.com/AXI0MH1VE/Deoxys-V2"
+homepage = "https://github.com/AXI0MH1VE/Deoxys-V2"
+documentation = "https://github.com/AXI0MH1VE/Deoxys-V2#readme"
+keywords = ["axiomhive", "deterministic-ai", "mamba-2", "state-space-model", "homomorphic-encryption", "zero-entropy", "machine-learning"]
+categories = ["algorithms", "cryptography", "science", "artificial-intelligence"]
 
 [dependencies]
 tauri = { version = "2.0", features = ["api-all"] }

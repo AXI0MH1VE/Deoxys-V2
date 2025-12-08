@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    name: Test Suite
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        rust: [stable]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust }}
+        override: true
+    
+    - name: Cache cargo registry
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target/
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+    
+    - name: Build TOON parser
+      run: |
+        cd src/core/toon-rs
+        cargo build --release --features frozen-seed
+    
+    - name: Build risk calculator
+      run: |
+        cd src/deployable
+        cargo build --release --features frozen-seed
+    
+    - name: Run tests
+      run: |
+        cd src/core/toon-rs
+        cargo test --features frozen-seed
+        cd ../../deployable
+        cargo test --features frozen-seed
+
+  lint:
+    name: Linting
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        components: rustfmt, clippy
+    
+    - name: Check formatting
+      run: |
+        cd src/core/toon-rs
+        cargo fmt -- --check
+        cd ../../deployable
+        cargo fmt -- --check
+    
+    - name: Clippy
+      run: |
+        cd src/core/toon-rs
+        cargo clippy -- -D warnings
+        cd ../../deployable
+        cargo clippy -- -D warnings
+
