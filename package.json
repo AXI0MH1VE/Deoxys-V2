@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tauri dev",
     "build": "tauri build",
-    "setup": "pip install torch numpy && npm install"
+    "setup": "pip install torch numpy && npm install",
+    "dev:server": "node dev-server.js"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.0.0"
