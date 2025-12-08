@@ -1,35 +1,36 @@
 <div align="center">
 
-# 🧬 AxiomHive Sovereign Manifold v2.1.0
-
-[![Version](https://img.shields.io/badge/version-2.1.0-000000?style=for-the-badge)](https://github.com/AXI0MH1VE/Deoxys-V2/releases)
-[![License](https://img.shields.io/badge/license-MIT-FF0038?style=for-the-badge)](./LICENSE)
-[![Zero Entropy](https://img.shields.io/badge/Zero%20Entropy-C%3D0-00FF00?style=for-the-badge)](./ARCHITECTURE.md#zero-entropy-law-c0)
-[![Rust](https://img.shields.io/badge/Rust-1.75+-orange?style=for-the-badge&logo=rust)](https://rustup.rs/)
-[![Tauri](https://img.shields.io/badge/Tauri-2.0-24C8DB?style=for-the-badge&logo=tauri)](https://tauri.app/)
+# 🧬 AxiomHive Sovereign Manifold
 
 **Higher-Dimensional Deterministic Intelligence System**
 
+[![Version](https://img.shields.io/badge/version-2.1.0-000000?style=flat-square)](https://github.com/AXI0MH1VE/Deoxys-V2/releases)
+[![License](https://img.shields.io/badge/license-MIT-FF0038?style=flat-square)](./LICENSE)
+[![Zero Entropy](https://img.shields.io/badge/Zero%20Entropy-C%3D0-00FF00?style=flat-square)](./ARCHITECTURE.md#zero-entropy-law-c0)
+[![Rust](https://img.shields.io/badge/Rust-1.75+-orange?style=flat-square&logo=rust)](https://rustup.rs/)
+[![Tauri](https://img.shields.io/badge/Tauri-2.0-24C8DB?style=flat-square&logo=tauri)](https://tauri.app/)
+
 *Mathematical Certainty Through Deterministic Computation*
 
-[![GitHub stars](https://img.shields.io/github/stars/AXI0MH1VE/Deoxys-V2?style=social&label=Star)](https://github.com/AXI0MH1VE/Deoxys-V2)
-[![GitHub forks](https://img.shields.io/github/forks/AXI0MH1VE/Deoxys-V2?style=social&label=Fork)](https://github.com/AXI0MH1VE/Deoxys-V2/fork)
+[![GitHub stars](https://img.shields.io/github/stars/AXI0MH1VE/Deoxys-V2?style=social)](https://github.com/AXI0MH1VE/Deoxys-V2/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/AXI0MH1VE/Deoxys-V2?style=social)](https://github.com/AXI0MH1VE/Deoxys-V2/fork)
+[![GitHub issues](https://img.shields.io/github/issues/AXI0MH1VE/Deoxys-V2?style=social)](https://github.com/AXI0MH1VE/Deoxys-V2/issues)
 
-[Features](#-features) • [Installation](#-installation) • [User Guide](./USER_GUIDE.md) • [Documentation](#-documentation) • [Architecture](#-architecture) • [Contributing](#-contributing)
+---
 
 **⚠️ FOR AGENTS: [Read AGENT_REQUIREMENTS.md](./AGENT_REQUIREMENTS.md) - NO OS COMMANDS OR HOOKS**
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
 </div>
 
 ---
 
-## 🎯 Overview
+## 🎯 What is AxiomHive?
 
-**AxiomHive Sovereign Manifold v2.1.0** is a deterministic intelligence system that enforces the **Zero Entropy Law (C=0)**, delivering mathematically verifiable, deterministic computation. Created by **Alexis M. Adams**, this system provides complete auditability, linear complexity scaling, and cryptographic sovereignty.
+**AxiomHive Sovereign Manifold** is a deterministic intelligence system that enforces the **Zero Entropy Law (C=0)**, delivering mathematically verifiable, deterministic computation. Created by **Alexis M. Adams**, this system provides complete auditability, linear complexity scaling, and cryptographic sovereignty.
 
-### Why AxiomHive?
-
-AxiomHive delivers mathematical certainty for high-stakes applications through:
+### Key Capabilities
 
 - **Deterministic Computation**: Every operation is mathematically reproducible
 - **Zero Entropy Enforcement**: Contradiction within any system state equals zero (C=0)
@@ -79,9 +80,7 @@ AxiomHive delivers mathematical certainty for high-stakes applications through:
 ### Prerequisites
 
 - **Rust** (latest stable) - [Install Rust](https://rustup.rs/)
-- **Python 3.11+** with pip
 - **Node.js 18+** and npm
-- **PyTorch** (automatically installed)
 
 ### Installation
 
@@ -92,27 +91,26 @@ AxiomHive delivers mathematical certainty for high-stakes applications through:
 
 **Linux/macOS:**
 ```bash
-chmod +x setup.sh
-./setup.sh
+chmod +x setup.sh && ./setup.sh
 ```
 
 **Manual Installation:**
 ```bash
-# Install Node.js dependencies
+# Install dependencies
 npm install
 
 # Build Rust components
-cd src/core/toon-rs && cargo build --release --features frozen-seed && cd ../../..
-cd src/deployable && cargo build --release --features frozen-seed && cd ../..
+cd src/core/toon-rs && cargo build --release --features frozen-seed
+cd ../../deployable && cargo build --release --features frozen-seed
 ```
 
-### Running the Application
+### Run
 
 ```bash
 npm run dev
 ```
 
-This launches the AxiomHive desktop application with full UI access to all system components.
+Launches the AxiomHive desktop application with full UI access to all system components.
 
 ## 📖 Documentation
 
@@ -120,14 +118,11 @@ This launches the AxiomHive desktop application with full UI access to all syste
 
 ### Essential Reading
 
-- **[USER_GUIDE.md](./USER_GUIDE.md)**: **Start here!** Complete guide explaining what AxiomHive is, how to use it, why it's elite, and competitive positioning
+- **[USER_GUIDE.md](./USER_GUIDE.md)**: **Start here!** Complete guide explaining what AxiomHive is and how to use it
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)**: Complete technical architecture and design decisions
 - **[AGENT_REQUIREMENTS.md](./AGENT_REQUIREMENTS.md)**: **⚠️ FOR AGENTS** - Mandatory requirements: Zero OS commands, in-process execution
 - **[NETWORK_SAFETY.md](./NETWORK_SAFETY.md)**: Network safety guarantees and verification
 - **[CONTRIBUTING.md](./CONTRIBUTING.md)**: Contribution guidelines and code standards
-- **[README_UI.md](./README_UI.md)**: User interface guide and feature documentation
-- **[ELITE_UI_FEATURES.md](./ELITE_UI_FEATURES.md)**: Elite UI features and design philosophy
-- **[PRODUCT_COMPLETE.md](./PRODUCT_COMPLETE.md)**: Product completion status and verification
 
 ### Component Documentation
 
@@ -158,7 +153,7 @@ AxiomHive Sovereign Manifold v2.1.0
 
 - **Frontend**: HTML5, CSS3, JavaScript (Vanilla), Tailwind CSS
 - **Backend**: Rust (Tauri v2) - **All core functionality in pure Rust**
-- **ML Framework**: Pure Rust Mamba-2 implementation (no PyTorch dependencies)
+- **ML Framework**: Pure Rust Mamba-2 implementation
 - **Cryptography**: Pure Rust LWE lattice-based FHE
 - **Build System**: Cargo, npm
 
@@ -185,9 +180,9 @@ The fundamental principle driving AxiomHive is the **Zero Entropy Law**: the con
 | Determinism | 100% mathematical certainty |
 | Memory Usage | Optimized pre-allocation |
 
-### Sigma-Leverage Proof
+### Sigma-Leverage Achievement
 
-At complexity n=10, AxiomHive achieves **4,401.92x leverage** over probabilistic systems, demonstrating overwhelming advantage for high-complexity tasks.
+At complexity n=10, AxiomHive achieves **4,401.92x leverage**, demonstrating exceptional performance for high-complexity tasks.
 
 ## 🎯 Use Cases
 
@@ -259,7 +254,6 @@ Creator and Architect of the AxiomHive Sovereign Manifold system. This project d
 - **Mamba Architecture**: State Space Models for efficient sequence modeling
 - **LWE Cryptography**: Learning With Errors for homomorphic encryption
 - **Tauri Framework**: Lightweight desktop application framework
-- **PyTorch**: Machine learning framework
 
 ## 📞 Contact & Support
 
@@ -277,16 +271,12 @@ Creator and Architect of the AxiomHive Sovereign Manifold system. This project d
 
 <div align="center">
 
-**AxiomHive Sovereign Manifold v2.1.0** | Zero Entropy Law (C=0) | Bio-Proof: 308537780
+**Made with ❤️ by [Alexis M. Adams](https://github.com/AXI0MH1VE)**
+
+**AxiomHive Sovereign Manifold v2.1.0** | Zero Entropy Law (C=0)
 
 *Mathematical Certainty in an Uncertain World*
 
-Made with ❤️ by **Alexis M. Adams**
-
-[![GitHub stars](https://img.shields.io/github/stars/AXI0MH1VE/Deoxys-V2?style=social&label=Star)](https://github.com/AXI0MH1VE/Deoxys-V2)
-[![GitHub forks](https://img.shields.io/github/forks/AXI0MH1VE/Deoxys-V2?style=social&label=Fork)](https://github.com/AXI0MH1VE/Deoxys-V2/fork)
-[![GitHub issues](https://img.shields.io/github/issues/AXI0MH1VE/Deoxys-V2?style=social&label=Issues)](https://github.com/AXI0MH1VE/Deoxys-V2/issues)
-
-**⭐ If you find AxiomHive useful, please consider giving it a star on GitHub!**
+[⭐ Star this repo](https://github.com/AXI0MH1VE/Deoxys-V2/stargazers) • [📖 Read the docs](./DOCUMENTATION_INDEX.md) • [🐛 Report a bug](https://github.com/AXI0MH1VE/Deoxys-V2/issues)
 
 </div>
