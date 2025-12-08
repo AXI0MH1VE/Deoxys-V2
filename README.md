@@ -11,7 +11,7 @@
 
 *Replacing Probabilistic AI with Mathematical Certainty*
 
-[Features](#-features) • [Installation](#-installation) • [Documentation](#-documentation) • [Architecture](#-architecture) • [Contributing](#-contributing)
+[Features](#-features) • [Installation](#-installation) • [User Guide](./USER_GUIDE.md) • [Documentation](#-documentation) • [Architecture](#-architecture) • [Contributing](#-contributing)
 
 </div>
 
@@ -113,8 +113,9 @@ This launches the AxiomHive desktop application with full UI access to all syste
 
 ## 📖 Documentation
 
-### Core Documentation
+### Essential Reading
 
+- **[USER_GUIDE.md](./USER_GUIDE.md)**: **Start here!** Complete guide explaining what AxiomHive is, how to use it, why it's elite, and competitive positioning
 - **[ARCHITECTURE.md](./ARCHITECTURE.md)**: Complete technical architecture and design decisions
 - **[README_UI.md](./README_UI.md)**: User interface guide and feature documentation
 - **[ELITE_UI_FEATURES.md](./ELITE_UI_FEATURES.md)**: Elite UI features and design philosophy
