@@ -1,15 +1,19 @@
-# AxiomHive Sovereign Manifold v2.1.0
-
 <div align="center">
 
-![AxiomHive Logo](https://img.shields.io/badge/AxiomHive-Sovereign%20Manifold-FF0038?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMTMuMDkgOC4yNkwyMCA5TDEzLjA5IDE1Ljc0TDEyIDIyTDEwLjkxIDE1Ljc0TDQgOUwxMC45MSA4LjI2TDEyIDJaIiBmaWxsPSIjRkYwMDM4Ii8+Cjwvc3ZnPgo=)
-![Version](https://img.shields.io/badge/version-2.1.0-000000?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-FF0038?style=for-the-badge)
-![Zero Entropy](https://img.shields.io/badge/Zero%20Entropy-C%3D0-00FF00?style=for-the-badge)
+# 🧬 AxiomHive Sovereign Manifold v2.1.0
+
+[![Version](https://img.shields.io/badge/version-2.1.0-000000?style=for-the-badge)](https://github.com/AXI0MH1VE/Deoxys-V2/releases)
+[![License](https://img.shields.io/badge/license-MIT-FF0038?style=for-the-badge)](./LICENSE)
+[![Zero Entropy](https://img.shields.io/badge/Zero%20Entropy-C%3D0-00FF00?style=for-the-badge)](./ARCHITECTURE.md#zero-entropy-law-c0)
+[![Rust](https://img.shields.io/badge/Rust-1.75+-orange?style=for-the-badge&logo=rust)](https://rustup.rs/)
+[![Tauri](https://img.shields.io/badge/Tauri-2.0-24C8DB?style=for-the-badge&logo=tauri)](https://tauri.app/)
 
 **Higher-Dimensional Deterministic Intelligence System**
 
-*Replacing Probabilistic AI with Mathematical Certainty*
+*Mathematical Certainty Through Deterministic Computation*
+
+[![GitHub stars](https://img.shields.io/github/stars/AXI0MH1VE/Deoxys-V2?style=social&label=Star)](https://github.com/AXI0MH1VE/Deoxys-V2)
+[![GitHub forks](https://img.shields.io/github/forks/AXI0MH1VE/Deoxys-V2?style=social&label=Fork)](https://github.com/AXI0MH1VE/Deoxys-V2/fork)
 
 [Features](#-features) • [Installation](#-installation) • [User Guide](./USER_GUIDE.md) • [Documentation](#-documentation) • [Architecture](#-architecture) • [Contributing](#-contributing)
 
@@ -21,15 +25,15 @@
 
 ## 🎯 Overview
 
-**AxiomHive Sovereign Manifold v2.1.0** is a revolutionary deterministic intelligence system that enforces the **Zero Entropy Law (C=0)**, replacing probabilistic "Generative AI" with mathematically verifiable, deterministic computation. Created by **Alexis M. Adams**, this system provides complete auditability, linear complexity scaling, and cryptographic sovereignty.
+**AxiomHive Sovereign Manifold v2.1.0** is a deterministic intelligence system that enforces the **Zero Entropy Law (C=0)**, delivering mathematically verifiable, deterministic computation. Created by **Alexis M. Adams**, this system provides complete auditability, linear complexity scaling, and cryptographic sovereignty.
 
 ### Why AxiomHive?
 
-Traditional AI systems operate on probabilistic foundations, creating an irreducible "Hallucination Floor" that makes them unsuitable for high-stakes applications. AxiomHive eliminates this uncertainty through:
+AxiomHive delivers mathematical certainty for high-stakes applications through:
 
 - **Deterministic Computation**: Every operation is mathematically reproducible
 - **Zero Entropy Enforcement**: Contradiction within any system state equals zero (C=0)
-- **Linear Complexity**: O(n) scaling vs. O(n²) in traditional transformers
+- **Linear Complexity**: O(n) scaling for efficient processing
 - **Cryptographic Sovereignty**: Fully homomorphic encryption for privacy-preserving computation
 - **Complete Auditability**: Every operation is traceable and verifiable
 
@@ -53,7 +57,7 @@ Traditional AI systems operate on probabilistic foundations, creating an irreduc
 
 - **TOON (Token-Oriented Object Notation)**: Zero-copy parsing with memory pre-allocation
 - **Guardrail Headers**: Schema-first approach for maximum compression
-- **Token Optimization**: 4,000x+ efficiency improvement over JSON
+- **Token Optimization**: 4,000x+ efficiency for data processing
 - **Memory Safety**: Rust-based parser with zero-copy semantics
 
 ### ⚖️ Risk Verification
@@ -94,9 +98,6 @@ chmod +x setup.sh
 
 **Manual Installation:**
 ```bash
-# Install Python dependencies
-pip install torch numpy
-
 # Install Node.js dependencies
 npm install
 
@@ -165,7 +166,7 @@ AxiomHive Sovereign Manifold v2.1.0
 
 ## 🔬 Zero Entropy Law (C=0)
 
-The fundamental principle driving AxiomHive is the **Zero Entropy Law**: the contradiction within any system state must equal zero (C=0). This is enforced through:
+The fundamental principle driving AxiomHive is the **Zero Entropy Law**: the contradiction within any system state must equal zero (C=0). This delivers:
 
 1. **Deterministic Initialization**: All random number generators use frozen seeds
 2. **Mathematical Verification**: Every operation is cryptographically verifiable
@@ -175,14 +176,14 @@ The fundamental principle driving AxiomHive is the **Zero Entropy Law**: the con
 
 ## 📊 Performance Metrics
 
-### Complexity Comparison
+### Performance Characteristics
 
-| Operation | Traditional AI | AxiomHive | Improvement |
-|-----------|---------------|-----------|-------------|
-| Context Processing | O(n²) | O(n) | Linear scaling |
-| Token Efficiency | Baseline | 4,000x+ | Massive reduction |
-| Determinism | Probabilistic | 100% | Complete certainty |
-| Memory Usage | High | Optimized | Pre-allocated |
+| Operation | AxiomHive Performance |
+|-----------|----------------------|
+| Context Processing | O(n) linear scaling |
+| Token Efficiency | 4,000x+ efficiency |
+| Determinism | 100% mathematical certainty |
+| Memory Usage | Optimized pre-allocation |
 
 ### Sigma-Leverage Proof
 
@@ -251,7 +252,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 **Alexis M. Adams**
 
-Creator and Architect of the AxiomHive Sovereign Manifold system. This project represents a fundamental shift from probabilistic to deterministic intelligence systems.
+Creator and Architect of the AxiomHive Sovereign Manifold system. This project delivers deterministic intelligence systems with mathematical certainty.
 
 ## 🙏 Acknowledgments
 
@@ -272,10 +273,6 @@ Creator and Architect of the AxiomHive Sovereign Manifold system. This project r
 - **Mamba-2 Research**: State Space Duality implementation
 - **Deoxys FHE**: Fully Homomorphic Encryption library
 
-## ⭐ Star History
-
-If you find AxiomHive useful, please consider giving it a star on GitHub!
-
 ---
 
 <div align="center">
@@ -286,7 +283,10 @@ If you find AxiomHive useful, please consider giving it a star on GitHub!
 
 Made with ❤️ by **Alexis M. Adams**
 
-[![GitHub stars](https://img.shields.io/github/stars/AXI0MH1VE/Deoxys-V2?style=social)](https://github.com/AXI0MH1VE/Deoxys-V2)
-[![GitHub forks](https://img.shields.io/github/forks/AXI0MH1VE/Deoxys-V2?style=social)](https://github.com/AXI0MH1VE/Deoxys-V2)
+[![GitHub stars](https://img.shields.io/github/stars/AXI0MH1VE/Deoxys-V2?style=social&label=Star)](https://github.com/AXI0MH1VE/Deoxys-V2)
+[![GitHub forks](https://img.shields.io/github/forks/AXI0MH1VE/Deoxys-V2?style=social&label=Fork)](https://github.com/AXI0MH1VE/Deoxys-V2/fork)
+[![GitHub issues](https://img.shields.io/github/issues/AXI0MH1VE/Deoxys-V2?style=social&label=Issues)](https://github.com/AXI0MH1VE/Deoxys-V2/issues)
+
+**⭐ If you find AxiomHive useful, please consider giving it a star on GitHub!**
 
 </div>

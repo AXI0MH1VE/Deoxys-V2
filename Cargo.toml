@@ -12,13 +12,15 @@ keywords = ["axiomhive", "deterministic-ai", "mamba-2", "state-space-model", "ho
 categories = ["algorithms", "cryptography", "science", "artificial-intelligence"]
 
 [dependencies]
-tauri = { version = "2.0", features = ["api-all"] }
+tauri = { version = "2.1.0", features = ["devtools"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1.0", features = ["full"] }
 futures = "0.3"
 log = "0.4"
 env_logger = "0.10"
+sha2 = "0.10"
+regex = "1.10"
 
 # Core modules
 toon-rs = { path = "src/core/toon-rs" }

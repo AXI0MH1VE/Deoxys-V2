@@ -1,10 +1,25 @@
+//! AxiomHive Sovereign Manifold v2.1.0 - Tauri Backend (Workspace Root)
+//! Pure Rust, zero OS commands or network I/O. Mirrors the deterministic backend in src-tauri.
+
 use tauri::Manager;
 use std::sync::Arc;
 use tokio::sync::Mutex;
-use std::process::Command;
 use serde::{Deserialize, Serialize};
 
-// Core modules are separate crates
+// Reuse the in-process cores from the src-tauri crate via explicit paths.
+#[path = "../src-tauri/src/mamba_core.rs"]
+mod mamba_core;
+#[path = "../src-tauri/src/fhe_core.rs"]
+mod fhe_core;
+#[path = "../src-tauri/src/contract_analyzer.rs"]
+mod contract_analyzer;
+#[path = "../src-tauri/src/axiom_determinist/mod.rs"]
+mod axiom_determinist;
+
+use mamba_core::DeterministicMambaCore;
+use fhe_core::DeoxysFHE;
+use contract_analyzer::ContractAnalyzer;
+use axiom_determinist::orchestrator::Orchestrator;
 
 use toon_rs::ToonParser;
 use axiom_risk_calculator::RiskCalculator;
@@ -12,6 +27,7 @@ use axiom_risk_calculator::RiskCalculator;
 #[derive(Clone)]
 struct AppState {
     risk_calculator: Arc<Mutex<RiskCalculator>>,
+    axiom_determinist: Arc<Mutex<Orchestrator>>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -29,7 +45,6 @@ struct FHEResult {
 
 #[tauri::command]
 async fn parse_toon_data(data: String) -> Result<String, String> {
-    // Create parser with the input data
     let parser = ToonParser::new(&data);
     match parser.parse() {
         Ok(result) => Ok(format!("{:?}", result)),
@@ -50,82 +65,95 @@ async fn run_mamba_model(
     state_dim: u32,
     input_dim: u32,
     temperature: f64,
-    frozen_seed: bool,
+    _frozen_seed: bool,
 ) -> Result<MambaModelResult, String> {
-    // Call Python script to run Mamba-2 model
-    let output = Command::new("python")
-        .arg("src/core/mamba_runner.py")
-        .arg("--prompt")
-        .arg(&prompt)
-        .arg("--state-dim")
-        .arg(state_dim.to_string())
-        .arg("--input-dim")
-        .arg(input_dim.to_string())
-        .arg("--temperature")
-        .arg(temperature.to_string())
-        .arg("--frozen-seed")
-        .arg(if frozen_seed { "true" } else { "false" })
-        .output()
-        .map_err(|e| format!("Failed to run Mamba model: {}", e))?;
+    // In-process deterministic Mamba-2 model - Pure Rust implementation
+    let mamba = DeterministicMambaCore::new(input_dim, state_dim, 16);
+    let output = mamba.forward(&prompt, temperature);
+    let metrics = mamba.get_stability_metrics();
 
-    if !output.status.success() {
-        let error = String::from_utf8_lossy(&output.stderr);
-        return Err(format!("Mamba model error: {}", error));
-    }
-
-    let result_str = String::from_utf8_lossy(&output.stdout);
-    let result: MambaModelResult = serde_json::from_str(&result_str)
-        .map_err(|e| format!("Failed to parse model output: {}", e))?;
-
-    Ok(result)
+    Ok(MambaModelResult {
+        output,
+        metrics: Some(metrics),
+        risk_score: Some(0),
+    })
 }
 
 #[tauri::command]
 async fn encrypt_fhe(message: i32) -> Result<FHEResult, String> {
-    let output = Command::new("python")
-        .arg("src/security/fhe_runner.py")
-        .arg("--action")
-        .arg("encrypt")
-        .arg("--message")
-        .arg(message.to_string())
-        .output()
-        .map_err(|e| format!("Failed to run FHE encryption: {}", e))?;
-
-    if !output.status.success() {
-        let error = String::from_utf8_lossy(&output.stderr);
-        return Err(format!("FHE encryption error: {}", error));
-    }
-
-    let result_str = String::from_utf8_lossy(&output.stdout);
-    let result: FHEResult = serde_json::from_str(&result_str)
-        .map_err(|e| format!("Failed to parse FHE result: {}", e))?;
-
-    Ok(result)
+    // In-process Deoxys FHE encryption - Pure Rust LWE implementation
+    let fhe = DeoxysFHE::new(None);
+    let ciphertext = fhe.encrypt(message)?;
+    let (ciphertext_str, keys_str) = fhe.serialize_ciphertext(ciphertext);
+    
+    Ok(FHEResult {
+        ciphertext: ciphertext_str,
+        keys: keys_str,
+    })
 }
 
 #[tauri::command]
 async fn decrypt_fhe(ciphertext: String, keys: String) -> Result<i32, String> {
-    let output = Command::new("python")
-        .arg("src/security/fhe_runner.py")
-        .arg("--action")
-        .arg("decrypt")
-        .arg("--ciphertext")
-        .arg(&ciphertext)
-        .arg("--keys")
-        .arg(&keys)
-        .output()
-        .map_err(|e| format!("Failed to run FHE decryption: {}", e))?;
-
-    if !output.status.success() {
-        let error = String::from_utf8_lossy(&output.stderr);
-        return Err(format!("FHE decryption error: {}", error));
-    }
-
-    let result_str = String::from_utf8_lossy(&output.stdout);
-    let plaintext: i32 = result_str.trim().parse()
-        .map_err(|e| format!("Failed to parse decrypted result: {}", e))?;
-
+    // In-process Deoxys FHE decryption - Pure Rust LWE implementation
+    let fhe = DeoxysFHE::new(None);
+    let ct = fhe.deserialize_ciphertext(&ciphertext, &keys)?;
+    let plaintext = fhe.decrypt(ct)?;
     Ok(plaintext)
+}
+
+#[tauri::command]
+async fn process_contract(contract_text: String) -> Result<serde_json::Value, String> {
+    // In-process contract analysis - Pure Rust DAG pipeline implementation
+    let analyzer = ContractAnalyzer::new(true);
+    Ok(analyzer.analyze_contract(&contract_text))
+}
+
+#[tauri::command]
+async fn generate_code_deterministic(
+    state: tauri::State<'_, AppState>,
+    requirement: String,
+    max_retries: Option<u32>,
+) -> Result<serde_json::Value, String> {
+    let _ = max_retries.unwrap_or(10);
+    let mut orchestrator = state.axiom_determinist.lock().await;
+    
+    match orchestrator.execute(&requirement) {
+        Ok(result) => Ok(serde_json::json!({
+            "success": result.success,
+            "generated_files": result.generated_files,
+            "total_iterations": result.total_iterations,
+            "validation_passed": result.validation_passed,
+            "errors": result.errors,
+        })),
+        Err(e) => Err(format!("AxiomDeterminist execution failed: {}", e)),
+    }
+}
+
+#[tauri::command]
+async fn validate_code_sterilization(
+    code: String,
+    language: String,
+) -> Result<serde_json::Value, String> {
+    use axiom_determinist::sandbox::HermeticSandbox;
+    
+    let sandbox = HermeticSandbox::new();
+    let result = sandbox.validate(&code, &language);
+    
+    Ok(serde_json::json!({
+        "passed": result.passed,
+        "errors": result.errors,
+        "warnings": result.warnings,
+    }))
+}
+
+#[tauri::command]
+async fn get_agent_statuses(
+    state: tauri::State<'_, AppState>,
+) -> Result<serde_json::Value, String> {
+    let orchestrator = state.axiom_determinist.lock().await;
+    let statuses = orchestrator.get_agent_statuses();
+    
+    Ok(serde_json::json!(statuses))
 }
 
 #[tauri::command]
@@ -135,6 +163,8 @@ async fn get_system_status() -> Result<serde_json::Value, String> {
         "mamba_core": "READY",
         "deoxys_fhe": "READY",
         "risk_calculator": "READY",
+        "contract_pipeline": "READY",
+        "axiom_determinist": "READY",
         "entropy_count": 1,
         "risk_score": 0
     }))
@@ -143,9 +173,11 @@ async fn get_system_status() -> Result<serde_json::Value, String> {
 fn main() {
     // Initialize core components
     let risk_calculator = Arc::new(Mutex::new(RiskCalculator::new()));
+    let axiom_determinist = Arc::new(Mutex::new(Orchestrator::new(10)));
 
     let app_state = AppState {
         risk_calculator,
+        axiom_determinist,
     };
 
     tauri::Builder::default()
@@ -156,15 +188,15 @@ fn main() {
             run_mamba_model,
             encrypt_fhe,
             decrypt_fhe,
-            get_system_status
+            process_contract,
+            get_system_status,
+            generate_code_deterministic,
+            validate_code_sterilization,
+            get_agent_statuses
         ])
         .setup(|app| {
-            // Initialize window
             let window = app.get_window("main").unwrap();
-
-            // Set window title
             window.set_title("AxiomHive Sovereign Manifold v2.1.0")?;
-
             Ok(())
         })
         .run(tauri::generate_context!())

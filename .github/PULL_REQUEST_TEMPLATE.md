@@ -1,45 +1,51 @@
 ## Description
-<!-- Provide a brief description of your changes -->
+
+Brief description of changes
 
 ## Type of Change
-<!-- Mark the relevant option with an 'x' -->
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+
+- [ ] Bug fix
+- [ ] New feature
 - [ ] Documentation update
 - [ ] Performance improvement
 - [ ] Code refactoring
+- [ ] Security enhancement
 
-## Zero Entropy Law Compliance
-<!-- Verify that your changes maintain C=0 -->
-- [ ] All operations are deterministic
-- [ ] No random number generation without frozen seeds
-- [ ] Temperature defaults to 0.0
-- [ ] All outputs are verifiable
-- [ ] Entropy count equals 1
+## Zero Entropy Verification
+
+- [ ] Maintains C=0 compliance
+- [ ] All tests pass
+- [ ] Documentation updated
+
+## In-Process Execution Verification
+
+- [ ] No `std::process::Command` usage
+- [ ] No network operations
+- [ ] All operations run in-process
+- [ ] Passed verification commands (see AGENT_REQUIREMENTS.md)
 
 ## Testing
-<!-- Describe the tests you ran and their results -->
-- [ ] All existing tests pass
-- [ ] New tests added for new functionality
-- [ ] Manual testing completed
 
-## Checklist
-- [ ] Code follows project style guidelines
-- [ ] Self-review completed
-- [ ] Comments added for complex code
-- [ ] Documentation updated
-- [ ] No new warnings generated
-- [ ] CHANGELOG.md updated (if applicable)
+Describe the tests you ran and their results.
 
 ## Screenshots (if applicable)
-<!-- Add screenshots to help explain your changes -->
+
+Add screenshots to help explain your changes.
 
 ## Related Issues
-<!-- Link to related issues -->
-Closes #
+
+Closes #(issue number)
+
+## Checklist
+
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my own code
+- [ ] I have commented my code, particularly in hard-to-understand areas
+- [ ] I have made corresponding changes to the documentation
+- [ ] My changes generate no new warnings
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] New and existing unit tests pass locally with my changes
 
 ---
 
-**By submitting this PR, I confirm that my contribution maintains Zero Entropy Law (C=0) compliance.**
-
+**⚠️ REMINDER**: All operations must run in-process using pure Rust. See [AGENT_REQUIREMENTS.md](../AGENT_REQUIREMENTS.md) before making any changes.

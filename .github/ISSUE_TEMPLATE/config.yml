@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/AXI0MH1VE/Deoxys-V2/blob/main/DOCUMENTATION_INDEX.md
+    about: Find all documentation files
+  - name: User Guide
+    url: https://github.com/AXI0MH1VE/Deoxys-V2/blob/main/USER_GUIDE.md
+    about: Complete user guide and getting started
+  - name: Architecture
+    url: https://github.com/AXI0MH1VE/Deoxys-V2/blob/main/ARCHITECTURE.md
+    about: Technical architecture documentation
+

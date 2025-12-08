@@ -179,34 +179,34 @@ Based on the architectural and financial assessment, the following conclusions a
 
 ## Works Cited
 
-1. How to Use AILock Correctly: The Operator's Complete Guide to ..., https://medium.com/@devdollzai/how-to-use-ailock-correctly-the-operators-complete-guide-to-deterministic-security-8b28a4641e77
-2. R3 Corda Vs Hyperledger - Rejolut, https://rejolut.com/blog/r3-corda-vs-hyperledger/
-3. Optimizing the Age of Information for Blockchain Technology With Applications to IoT Sensors | Request PDF - ResearchGate, https://www.researchgate.net/publication/336819699_Optimizing_the_Age_of_Information_for_Blockchain_Technology_With_Applications_to_IoT_Sensors
-4. The Axiom of Determinism: Why Probabilistic AI (and Your ...) - Medium, https://medium.com/@devdollzai/axiomhive-sliding-into-financial-entropy-alexis-m-adams-nicholas-m-grossi-7d2c16086442
-5. The Power of Invariants: Understanding Stability in Dynamic Systems | by Validatus, https://validatus.medium.com/the-power-of-invariants-understanding-stability-in-dynamic-systems-0a9870960bc7
-6. Axiom Hive Success Story. Alexis M. Adams Award Ship Thinking, Winning Was Only The Start Of Human & Ai Safety Beginning… - Medium, https://medium.com/@devdollzai/alexis-adams-ceo-of-axiom-hive-success-story-alexis-m-adams-wins-ethics-human-future-of-ai-501e1a89a546
-7. Challenges with distributed systems - Amazon AWS, https://aws.amazon.com/builders-library/challenges-with-distributed-systems/
-8. Distributed computing - Wikipedia, https://en.wikipedia.org/wiki/Distributed_computing
-9. Formal Verification of Implementability of Timing Requirements - Computing & Software, https://www.cas.mcmaster.ca/~lawford/papers/fm2008.pdf
-10. Formal Verification of Implementability of Timing Requirements - Department of Computing, http://www.doc.ic.ac.uk/crg/events/ARW07/submissions/Hu.pdf
-11. IOW Theory - IMS Handbook, https://ims-handbook.cenosco.com/docs/iow-theory
-12. Minimizing AoI in Mobile Edge Computing: Nested Index Policy with Preemptive and Non-preemptive Structure - arXiv, https://arxiv.org/html/2508.20564v1
-13. Distributed Ledger Technology in Healthcare: Enhancing Governance and Performance in a Decentralized Ecosystem - MDPI, https://www.mdpi.com/2227-7080/13/2/58
-14. Trusted execution environment - Wikipedia, https://en.wikipedia.org/wiki/Trusted_execution_environment
-15. Trusted Execution Environment (TEE) - Microsoft Learn, https://learn.microsoft.com/en-us/azure/confidential-computing/trusted-execution-environment
-16. Developer & Owner of AxiomHive and the AI System Architect. Alexis M. Adams Lead ... - Medium, https://medium.com/@ericadamsxai/developer-owner-of-axiom-hive-and-the-ai-system-architect-f2f7f0a15e9f
-17. Distributed Ledger Technology (DLT) and Blockchain - World Bank Open Knowledge Repository, https://openknowledge.worldbank.org/bitstreams/5166f335-35db-57d7-9c7e-110f7d018f79/download
-18. (PDF) Managing Intellectual Property in Governance Using Non-Fungible Tokens for Digital Public Goods to Ensure Transparent Ownership - ResearchGate, https://www.researchgate.net/publication/396362815_Managing_Intellectual_Property_in_Governance_Using_Non-Fungible_Tokens_for_Digital_Public_Goods_to_Ensure_Transparent_Ownership
-19. Governance Tokens - NonFungible.com, https://nonfungible.com/academy/nft/governance-tokens
-20. Types and Characteristics of Digital Currencies: Pros, Cons, Future Applications, https://www.investopedia.com/terms/d/digital-currency.asp
-21. Proposal for a Regulatory Framework for Digital Assets: An Ethical and Inclusive Infrastructure for Market Integrity and Investor Protection - SEC.gov, https://www.sec.gov/files/ctf-written-sec-proposal-digital-asset-09-08-2025.pdf
-22. What Is Distributed Ledger Technology (DLT) and How Does It Work? - Investopedia, https://www.investopedia.com/terms/d/distributed-ledger-technology-dlt.asp
-23. Governance of Ledger-Anchored Decentralized Identifiers - arXiv, https://arxiv.org/html/2503.16972v1
-24. What is Decentralised Digital Identity? - Ledger, https://www.ledger.com/academy/topics/security/what-is-decentralised-digital-identity
-25. Governance in systems based on distributed ledger technology (DLT): a comparative study - De Nederlandsche Bank, https://www.dnb.nl/media/ji0pza2a/working_paper_no-_718.pdf
-26. Client Alert: The GENIUS Act and Federal Regulatory Developments on Digital Assets, https://www.shumaker.com/insight/client-alert-the-genius-act-and-federal-regulatory-developments-on-digital-assets/
-27. Comprehensive Technical Framework for Blockchain and Tokenization Infrastructure in International Financial Integration - SEC.gov, https://www.sec.gov/files/ctf-written-proposal-sec-project-09-15-2025.pdf
-28. Industry News 2024 Beyond the Blockchain Bubble Distributed Ledger Technology for a Resilient Audit Landscape - ISACA, https://www.isaca.org/resources/news-and-trends/industry-news/2024/beyond-the-blockchain-bubble-distributed-ledger-technology-for-a-resilient-audit-landscape
-29. Security & Audits | Panoptic, https://panoptic.xyz/docs/security/security_audits
-30. Securing Age of Information (AoI)-Enabled 5G Smart Warehouse Using Access Control Scheme | Request PDF - ResearchGate, https://www.researchgate.net/publication/363398022_Securing_Age_of_Information_AoI-Enabled_5G_Smart_Warehouse_Using_Access_Control_Scheme
-31. Risk Management Framework of Blockchain and DLT Systems (RMF-BDLT): Reward Mechanisms, https://www.blockchain.uzh.ch/projects/risk-management-framework-of-blockchain-and-dlt-systems-rmf-bdlt-reward-mechanisms/
+1. [How to Use AILock Correctly: The Operator's Complete Guide to ...](https://medium.com/@devdollzai/how-to-use-ailock-correctly-the-operators-complete-guide-to-deterministic-security-8b28a4641e77)
+2. [R3 Corda Vs Hyperledger - Rejolut](https://rejolut.com/blog/r3-corda-vs-hyperledger/)
+3. [Optimizing the Age of Information for Blockchain Technology With Applications to IoT Sensors | Request PDF - ResearchGate](https://www.researchgate.net/publication/336819699_Optimizing_the_Age_of_Information_for_Blockchain_Technology_With_Applications_to_IoT_Sensors)
+4. [The Axiom of Determinism: Why Probabilistic AI (and Your ...) - Medium](https://medium.com/@devdollzai/axiomhive-sliding-into-financial-entropy-alexis-m-adams-nicholas-m-grossi-7d2c16086442)
+5. [The Power of Invariants: Understanding Stability in Dynamic Systems | by Validatus](https://validatus.medium.com/the-power-of-invariants-understanding-stability-in-dynamic-systems-0a9870960bc7)
+6. [Axiom Hive Success Story. Alexis M. Adams Award Ship Thinking, Winning Was Only The Start Of Human & Ai Safety Beginning… - Medium](https://medium.com/@devdollzai/alexis-adams-ceo-of-axiom-hive-success-story-alexis-m-adams-wins-ethics-human-future-of-ai-501e1a89a546)
+7. [Challenges with distributed systems - Amazon AWS](https://aws.amazon.com/builders-library/challenges-with-distributed-systems/)
+8. [Distributed computing - Wikipedia](https://en.wikipedia.org/wiki/Distributed_computing)
+9. [Formal Verification of Implementability of Timing Requirements - Computing & Software](https://www.cas.mcmaster.ca/~lawford/papers/fm2008.pdf)
+10. [Formal Verification of Implementability of Timing Requirements - Department of Computing](http://www.doc.ic.ac.uk/crg/events/ARW07/submissions/Hu.pdf)
+11. [IOW Theory - IMS Handbook](https://ims-handbook.cenosco.com/docs/iow-theory)
+12. [Minimizing AoI in Mobile Edge Computing: Nested Index Policy with Preemptive and Non-preemptive Structure - arXiv](https://arxiv.org/html/2508.20564v1)
+13. [Distributed Ledger Technology in Healthcare: Enhancing Governance and Performance in a Decentralized Ecosystem - MDPI](https://www.mdpi.com/2227-7080/13/2/58)
+14. [Trusted execution environment - Wikipedia](https://en.wikipedia.org/wiki/Trusted_execution_environment)
+15. [Trusted Execution Environment (TEE) - Microsoft Learn](https://learn.microsoft.com/en-us/azure/confidential-computing/trusted-execution-environment)
+16. [Developer & Owner of AxiomHive and the AI System Architect. Alexis M. Adams Lead ... - Medium](https://medium.com/@ericadamsxai/developer-owner-of-axiom-hive-and-the-ai-system-architect-f2f7f0a15e9f)
+17. [Distributed Ledger Technology (DLT) and Blockchain - World Bank Open Knowledge Repository](https://openknowledge.worldbank.org/bitstreams/5166f335-35db-57d7-9c7e-110f7d018f79/download)
+18. [(PDF) Managing Intellectual Property in Governance Using Non-Fungible Tokens for Digital Public Goods to Ensure Transparent Ownership - ResearchGate](https://www.researchgate.net/publication/396362815_Managing_Intellectual_Property_in_Governance_Using_Non-Fungible_Tokens_for_Digital_Public_Goods_to_Ensure_Transparent_Ownership)
+19. [Governance Tokens - NonFungible.com](https://nonfungible.com/academy/nft/governance-tokens)
+20. [Types and Characteristics of Digital Currencies: Pros, Cons, Future Applications](https://www.investopedia.com/terms/d/digital-currency.asp)
+21. [Proposal for a Regulatory Framework for Digital Assets: An Ethical and Inclusive Infrastructure for Market Integrity and Investor Protection - SEC.gov](https://www.sec.gov/files/ctf-written-sec-proposal-digital-asset-09-08-2025.pdf)
+22. [What Is Distributed Ledger Technology (DLT) and How Does It Work? - Investopedia](https://www.investopedia.com/terms/d/distributed-ledger-technology-dlt.asp)
+23. [Governance of Ledger-Anchored Decentralized Identifiers - arXiv](https://arxiv.org/html/2503.16972v1)
+24. [What is Decentralised Digital Identity? - Ledger](https://www.ledger.com/academy/topics/security/what-is-decentralised-digital-identity)
+25. [Governance in systems based on distributed ledger technology (DLT): a comparative study - De Nederlandsche Bank](https://www.dnb.nl/media/ji0pza2a/working_paper_no-_718.pdf)
+26. [Client Alert: The GENIUS Act and Federal Regulatory Developments on Digital Assets](https://www.shumaker.com/insight/client-alert-the-genius-act-and-federal-regulatory-developments-on-digital-assets/)
+27. [Comprehensive Technical Framework for Blockchain and Tokenization Infrastructure in International Financial Integration - SEC.gov](https://www.sec.gov/files/ctf-written-proposal-sec-project-09-15-2025.pdf)
+28. [Industry News 2024 Beyond the Blockchain Bubble Distributed Ledger Technology for a Resilient Audit Landscape - ISACA](https://www.isaca.org/resources/news-and-trends/industry-news/2024/beyond-the-blockchain-bubble-distributed-ledger-technology-for-a-resilient-audit-landscape)
+29. [Security & Audits | Panoptic](https://panoptic.xyz/docs/security/security_audits)
+30. [Securing Age of Information (AoI)-Enabled 5G Smart Warehouse Using Access Control Scheme | Request PDF - ResearchGate](https://www.researchgate.net/publication/363398022_Securing_Age_of_Information_AoI-Enabled_5G_Smart_Warehouse_Using_Access_Control_Scheme)
+31. [Risk Management Framework of Blockchain and DLT Systems (RMF-BDLT): Reward Mechanisms](https://www.blockchain.uzh.ch/projects/risk-management-framework-of-blockchain-and-dlt-systems-rmf-bdlt-reward-mechanisms/)
