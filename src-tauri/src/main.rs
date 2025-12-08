@@ -4,8 +4,6 @@ use tokio::sync::Mutex;
 use std::process::Command;
 use serde::{Deserialize, Serialize};
 
-// Core modules are separate crates
-
 use toon_rs::ToonParser;
 use axiom_risk_calculator::RiskCalculator;
 
@@ -53,8 +51,14 @@ async fn run_mamba_model(
     frozen_seed: bool,
 ) -> Result<MambaModelResult, String> {
     // Call Python script to run Mamba-2 model
+    let script_path = std::env::current_dir()
+        .unwrap()
+        .join("src")
+        .join("core")
+        .join("mamba_runner.py");
+    
     let output = Command::new("python")
-        .arg("src/core/mamba_runner.py")
+        .arg(script_path)
         .arg("--prompt")
         .arg(&prompt)
         .arg("--state-dim")
@@ -82,8 +86,14 @@ async fn run_mamba_model(
 
 #[tauri::command]
 async fn encrypt_fhe(message: i32) -> Result<FHEResult, String> {
+    let script_path = std::env::current_dir()
+        .unwrap()
+        .join("src")
+        .join("security")
+        .join("fhe_runner.py");
+    
     let output = Command::new("python")
-        .arg("src/security/fhe_runner.py")
+        .arg(script_path)
         .arg("--action")
         .arg("encrypt")
         .arg("--message")
@@ -105,8 +115,14 @@ async fn encrypt_fhe(message: i32) -> Result<FHEResult, String> {
 
 #[tauri::command]
 async fn decrypt_fhe(ciphertext: String, keys: String) -> Result<i32, String> {
+    let script_path = std::env::current_dir()
+        .unwrap()
+        .join("src")
+        .join("security")
+        .join("fhe_runner.py");
+    
     let output = Command::new("python")
-        .arg("src/security/fhe_runner.py")
+        .arg(script_path)
         .arg("--action")
         .arg("decrypt")
         .arg("--ciphertext")
@@ -170,3 +186,4 @@ fn main() {
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
+

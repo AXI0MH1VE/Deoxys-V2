@@ -3,8 +3,8 @@
   "build": {
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist",
+    "devPath": "../index.html",
+    "distDir": "../",
     "withGlobalTauri": true
   },
   "package": {

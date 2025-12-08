@@ -1,0 +1,18 @@
+{
+  "name": "axiomhive-sovereign-manifold",
+  "version": "2.1.0",
+  "description": "AxiomHive Sovereign Manifold - Zero Entropy Deterministic Intelligence System",
+  "type": "module",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "setup": "pip install torch numpy && npm install"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  }
+}
+

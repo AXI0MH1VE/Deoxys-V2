@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AxiomHive Sovereign Manifold v2.1.0</title>
+    <link rel="stylesheet" href="./ui/global.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-axiom-black text-miami-red font-axiom">
+    <div class="container mx-auto p-6 min-h-screen">
+        <!-- Header -->
+        <header class="mb-8 border-b border-miami-red/20 pb-4">
+            <h1 class="text-4xl font-bold mb-2">AxiomHive Sovereign Manifold</h1>
+            <p class="text-white/70 text-sm">Zero Entropy Law (C=0) - Deterministic Intelligence System v2.1.0</p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Column: Model Control -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Model Input Section -->
+                <div class="card bg-axiom-gray-50 border border-miami-red/20 p-6">
+                    <h2 class="text-2xl font-bold mb-4 text-miami-red">Mamba-2 Model Control</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Input Text Area -->
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Input Prompt</label>
+                            <textarea 
+                                id="modelInput" 
+                                class="w-full h-32 bg-axiom-gray-100 border border-miami-red/30 text-white p-3 focus:border-miami-red focus:outline-none"
+                                placeholder="Enter your prompt here..."
+                            >Define the Zero Entropy Law.</textarea>
+                        </div>
+
+                        <!-- Model Parameters -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">State Dimension</label>
+                                <input 
+                                    type="number" 
+                                    id="stateDim" 
+                                    value="128" 
+                                    min="64" 
+                                    max="256" 
+                                    class="w-full bg-axiom-gray-100 border border-miami-red/30 text-white p-2 focus:border-miami-red focus:outline-none"
+                                />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Input Dimension</label>
+                                <input 
+                                    type="number" 
+                                    id="inputDim" 
+                                    value="128" 
+                                    min="64" 
+                                    max="512" 
+                                    class="w-full bg-axiom-gray-100 border border-miami-red/30 text-white p-2 focus:border-miami-red focus:outline-none"
+                                />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Temperature</label>
+                                <input 
+                                    type="number" 
+                                    id="temperature" 
+                                    value="0.0" 
+                                    min="0.0" 
+                                    max="1.0" 
+                                    step="0.1"
+                                    class="w-full bg-axiom-gray-100 border border-miami-red/30 text-white p-2 focus:border-miami-red focus:outline-none"
+                                />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2">Frozen Seed</label>
+                                <input 
+                                    type="checkbox" 
+                                    id="frozenSeed" 
+                                    checked
+                                    class="w-5 h-5 accent-miami-red"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Control Buttons -->
+                        <div class="flex gap-4">
+                            <button 
+                                id="runModelBtn" 
+                                class="flex-1 bg-miami-red text-axiom-black font-bold py-3 px-6 hover:bg-miami-red-light transition-colors uppercase tracking-wide"
+                            >
+                                Run Model
+                            </button>
+                            <button 
+                                id="clearBtn" 
+                                class="px-6 py-3 border border-miami-red/50 text-miami-red hover:bg-miami-red/10 transition-colors"
+                            >
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div class="card bg-axiom-gray-50 border border-miami-red/20 p-6">
+                    <h2 class="text-2xl font-bold mb-4 text-miami-red">Model Output</h2>
+                    <div 
+                        id="modelOutput" 
+                        class="w-full h-64 bg-axiom-gray-100 border border-miami-red/30 text-white p-4 overflow-y-auto font-mono text-sm"
+                    >
+                        <p class="text-white/50">Output will appear here...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: System Status & Tools -->
+            <div class="space-y-6">
+                <!-- System Status -->
+                <div class="card bg-axiom-gray-50 border border-miami-red/20 p-6">
+                    <h2 class="text-xl font-bold mb-4 text-miami-red">System Status</h2>
+                    <div id="systemStatus" class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-white/70">TOON Parser:</span>
+                            <span class="text-green-400">READY</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/70">Mamba-2 Core:</span>
+                            <span class="text-green-400">READY</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/70">Deoxys FHE:</span>
+                            <span class="text-green-400">READY</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/70">Risk Calculator:</span>
+                            <span class="text-green-400">READY</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/70">Entropy Count:</span>
+                            <span id="entropyCount" class="text-miami-red font-bold">1</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-white/70">Risk Score:</span>
+                            <span id="riskScore" class="text-green-400 font-bold">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOON Parser Tool -->
+                <div class="card bg-axiom-gray-50 border border-miami-red/20 p-6">
+                    <h2 class="text-xl font-bold mb-4 text-miami-red">TOON Parser</h2>
+                    <textarea 
+                        id="toonInput" 
+                        class="w-full h-24 bg-axiom-gray-100 border border-miami-red/30 text-white p-2 text-xs font-mono mb-2 focus:border-miami-red focus:outline-none"
+                        placeholder="market_ticks [1000]{symbol,price,vol,ts}"
+                    ></textarea>
+                    <button 
+                        id="parseToonBtn" 
+                        class="w-full bg-miami-red/20 text-miami-red font-semibold py-2 px-4 hover:bg-miami-red/30 transition-colors"
+                    >
+                        Parse TOON
+                    </button>
+                    <div id="toonOutput" class="mt-2 text-xs font-mono text-white/70"></div>
+                </div>
+
+                <!-- Risk Calculator -->
+                <div class="card bg-axiom-gray-50 border border-miami-red/20 p-6">
+                    <h2 class="text-xl font-bold mb-4 text-miami-red">Risk Verification</h2>
+                    <button 
+                        id="verifyRiskBtn" 
+                        class="w-full bg-miami-red text-axiom-black font-bold py-2 px-4 hover:bg-miami-red-light transition-colors uppercase"
+                    >
+                        Verify System
+                    </button>
+                    <div id="riskOutput" class="mt-2 text-xs font-mono text-white/70"></div>
+                </div>
+
+                <!-- FHE Encryption Tool -->
+                <div class="card bg-axiom-gray-50 border border-miami-red/20 p-6">
+                    <h2 class="text-xl font-bold mb-4 text-miami-red">Deoxys FHE</h2>
+                    <input 
+                        type="number" 
+                        id="fheInput" 
+                        placeholder="Enter number to encrypt"
+                        class="w-full bg-axiom-gray-100 border border-miami-red/30 text-white p-2 mb-2 focus:border-miami-red focus:outline-none"
+                    />
+                    <div class="flex gap-2">
+                        <button 
+                            id="encryptBtn" 
+                            class="flex-1 bg-miami-red/20 text-miami-red font-semibold py-2 px-4 hover:bg-miami-red/30 transition-colors"
+                        >
+                            Encrypt
+                        </button>
+                        <button 
+                            id="decryptBtn" 
+                            class="flex-1 bg-miami-red/20 text-miami-red font-semibold py-2 px-4 hover:bg-miami-red/30 transition-colors"
+                        >
+                            Decrypt
+                        </button>
+                    </div>
+                    <div id="fheOutput" class="mt-2 text-xs font-mono text-white/70 break-all"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-8 pt-4 border-t border-miami-red/20 text-center text-white/50 text-xs">
+            <p>AxiomHive Sovereign Manifold v2.1.0 | Zero Entropy Law (C=0) | Bio-Proof: 308537780</p>
+        </footer>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
+
